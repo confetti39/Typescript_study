@@ -12,8 +12,18 @@ class Dict {
       this.words[word.term] = word.def;
     }
   }
+  delete(word: Word) {
+    if (this.words[word.term] !== undefined) {
+      delete this.words[word.term];
+    }
+  }
   def(term: string) {
     return this.words[term];
+  }
+  update(word: Word, newDef: string) {
+    if (this.words[word.term] !== undefined) {
+      this.words[word.term] = newDef;
+    }
   }
 }
 
@@ -25,3 +35,5 @@ const kimchi = new Word("kimchi", "한국의 음식");
 const dict = new Dict();
 dict.add(kimchi);
 dict.def("kimchi");
+dict.update(kimchi, "매운 한국의 음식");
+dict.delete(kimchi);
